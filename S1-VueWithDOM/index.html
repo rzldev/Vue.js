@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Application</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="App">
+      <h1 v-once>{{ title }}</h1>
+      <p>{{ setTitle() }}</p>
+      <input type="text" v-on:input="changeTitle"></input>
+      <p><a v-bind:href="link">Google</a></p>
+      <p v-html="finishedLink"></p>
+      <button v-on:click="clickButton">Click</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#App',
+        data: {
+          title: 'Hello World!',
+          link: 'https://www.google.com',
+          finishedLink: '<a href="https://www.google.com">Google Link</a>',
+          counter: 0
+        },
+        methods: {
+          setTitle: function() {
+            this.title = 'Hello';
+            return this.title;
+          },
+  				changeTitle: function(event) {
+  					this.title = event.target.value;
+  				},
+          clickButton: function(event) {
+            return event.target.value = this.counter;
+          }
+  			}
+      });
+    </script>
+  </body>
+</html>
