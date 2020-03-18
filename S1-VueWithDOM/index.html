@@ -1,43 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vue Application</title>
-    <script src="vue.js"></script>
-  </head>
-  <body>
-    <div id="App">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vue Application</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="vue.js"></script>
+</head>
+
+<body>
+  <div id="App">
+    <div>
       <h1 v-once>{{ title }}</h1>
       <p>{{ setTitle() }}</p>
-      <input type="text" v-on:input="changeTitle"></input>
-      <p><a v-bind:href="link">Google</a></p>
-      <p v-html="finishedLink"></p>
-      <button v-on:click="clickButton">Click</button>
+      <input type="text" @input="changeTitle"></input>
     </div>
 
-    <script>
-      new Vue({
-        el: '#App',
-        data: {
-          title: 'Hello World!',
-          link: 'https://www.google.com',
-          finishedLink: '<a href="https://www.google.com">Google Link</a>',
-          counter: 0
-        },
-        methods: {
-          setTitle: function() {
-            this.title = 'Hello';
-            return this.title;
-          },
-  				changeTitle: function(event) {
-  					this.title = event.target.value;
-  				},
-          clickButton: function(event) {
-            return event.target.value = this.counter;
-          }
-  			}
-      });
-    </script>
-  </body>
+    <div>
+      <p><a :href="link">Google</a></p>
+
+      <p v-html="finishedLink"></p>
+    </div>
+
+    <div>
+      <p @mousemove="updateCoordinate">
+        ouse Coodinates: {{ x }} / {{ y }}
+        - <span @mousemove.stop="">DEAD SPOT</span>
+      </p>
+    </div>
+
+    <div>
+      <button @click="clickButton(2)">Click</button>
+      <p>{{ counter }}</p>
+      <p>{{ newCounter }}</p>
+    </div>
+
+    <div>
+      <input type="text" @keyup.enter="alertMe">
+    </div>
+
+    <br>
+
+    <div>
+      <input type="text" v-model="name">
+      <p>{{ name }}</p>
+    </div>
+
+    <div>
+      <button type="button" @click="firstCounter++">Increase</button>
+      <button type="button" @click="firstCounter--">Decrease</button>
+      <p>{{ firstCounter }} | {{ result() }}</p>
+
+      <button type="button" @click="secondCounter++">Increase</button>
+      <button type="button" @click="secondCounter--">Decrease</button>
+      <p>{{ secondCounter }} | {{ output }}</p>
+    </div>
+
+    <div>
+      <div class="demo" @click="attachColor = !attachColor" :class="divClasses"></div>
+      <div class="demo" :class="{red: attachColor}"></div>
+      <div class="demo" :class="[color, {red: attachColor}]"></div>
+      <div class="demo" :style="myStyle"></div>
+      <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+      <br>
+      <input type="text" v-model="color">
+      <input type="text" v-model="width">
+    </div>
+  </div>
+
+  <script src="app.js" charset="utf-8"></script>
+</body>
+
 </html>
