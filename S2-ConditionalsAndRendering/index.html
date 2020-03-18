@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue Application</title>
+    <script src="vue.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <p v-if="show">You can see me!</p>
+        <p v-else>You can not see me!</p>
+        <button type="button" @click="show = !show">Click!</button>
+
+        <template v-if="show">
+          <h1>Heading</h1>
+          <p>Inside a template</p>
+        </template>
+      </div>
+
+      <div >
+        <p v-show="show">You can inspect the element to see the difference</p>
+      </div>
+
+      <hr>
+
+      <div>
+        <ul>
+          <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+        </ul>
+
+        <hr>
+
+        <template v-for="(ingredient, index) in ingredients">
+          <h3>{{ index }}. {{ ingredient }}</h3>
+        </template>
+      </div>
+
+      <hr>
+
+      <div>
+        <ul>
+          <li v-for="person in people">{{ person }}</li>
+        </ul>
+
+        <hr>
+
+        <ul>
+          <li v-for="person in people">
+            <div v-for="(value, key, index) in person">
+              [{{ index }}] {{ key }}: {{ value }}
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div>
+        <span v-for="x in 10">{{ x }}</span>
+      </div>
+
+      <hr>
+
+      <div>
+        <button type="button" @click="ingredients.push('spices')">Add ingredient</button>
+      </div>
+    </div>
+
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>
