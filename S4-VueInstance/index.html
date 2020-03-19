@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<div id="app1">
+  <h1 ref="heading">{{ title }}</h1>
+  <button @click="show" ref="myButton">Show Paragraph</button>
+  <p v-if="showParagraph">This is not always visible</p>
+</div>
+
+<div id="app2">
+  <h1 ref="heading">{{ title }}</h1>
+  <button @click="changeTitle">Change Title</button>
+  <p v-if="showParagraph">This is not always visible</p>
+  
+  <hello></hello>
+  <hello></hello>
+  <hello></hello>
+</div>
+
+<div id="app3">
+
+</div>
+
+<script src="app.js" charset="utf-8"></script>
