@@ -1,0 +1,34 @@
+<template>
+    <div class="secondary-color">
+        <nav class="navbar navbar-expand-md navbar-dark container">
+            <a class="navbar-brand h1 mb-1" href="/">Axios</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <router-link to="/signup" tag="li" class="nav-item" active-class="active">
+                        <a class="nav-link">Sign Up</a>
+                    </router-link>
+                    <router-link to="/signin" tag="li" class="nav-item" active-class="active">
+                        <a class="nav-link">Sign In</a>
+                    </router-link>
+                    <router-link to="/" tag="li" class="nav-item" active-class="active" exact>
+                        <a class="nav-link">Dashboard</a>
+                    </router-link>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</template>
+
+<script>
+    export default {
+        
+    }
+</script>
+
+<style scoped>
+    
+</style>
